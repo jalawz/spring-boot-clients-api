@@ -9,15 +9,13 @@ public class ClienteDTO implements Serializable {
 
 	private static final long serialVersionUID = 1L;
 	
-	@NotNull(message="Campo nome não está presente")
-	@NotBlank(message="Campo nome deve ser preechido")
+	@NotNull(message="Favor preencher o campo Nome")
 	private String nome;
 	
-	@NotNull(message="Campo limiteCredito não está presente")
+	@NotNull(message="Favor preencher o campo Limite de Crédito")
 	private Double limiteCredito;
 	
-	@NotNull(message="Campo risco não está presente")
-	@NotBlank(message="Campo risco deve ser preechido")
+	@NotNull(message="Favor preencher o campo Risco")
 	private String risco;
 
 	public String getNome() {
