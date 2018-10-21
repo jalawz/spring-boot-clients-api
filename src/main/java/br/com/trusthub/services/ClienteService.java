@@ -34,6 +34,7 @@ public class ClienteService {
 	}
 	
 	public Cliente update(Cliente obj) {
+		this.findById(obj.getId());
 		return repo.save(obj);
 	}
 	
