@@ -9,6 +9,7 @@ import br.com.trusthub.domain.Cliente;
 import br.com.trusthub.domain.enums.Risco;
 import br.com.trusthub.dto.ClienteDTO;
 import br.com.trusthub.repositories.ClienteRepository;
+import br.com.trusthub.services.exceptions.ResourceNotFoundException;
 
 @Service
 public class ClienteService {
@@ -17,7 +18,7 @@ public class ClienteService {
 	private ClienteRepository repo;
 	
 	public Cliente findById(Integer id) {
-		return repo.findById(id).orElse(null);
+		return repo.findById(id).orElseThrow(() -> new ResourceNotFoundException("Cliente " + id + " não encontrado"));
 	}
 	
 	public Cliente clienteDTO(ClienteDTO dto) {
@@ -30,5 +31,14 @@ public class ClienteService {
 	
 	public List<Cliente> findAll() {
 		return repo.findAll();
+	}
+	
+	public Cliente update(Cliente obj) {
+		return repo.save(obj);
+	}
+	
+	public void delete(Integer id) {
+		this.findById(id);
+		repo.deleteById(id);
 	}
 }
